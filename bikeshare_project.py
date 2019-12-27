@@ -1,6 +1,7 @@
 import time
 import pandas as pd
 import numpy as np
+
 CITY_DATA = { 'chicago': 'chicago.csv',
               'new york city': 'new_york_city.csv',
               'washington': 'washington.csv' }
@@ -13,6 +14,7 @@ weekdays = ('sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday',
 def get_filters():
     """
     Asks user to specify a city, month, and day to analyze.
+
     Returns:
         (str) city - name of the city to analyze
         (str) month - name of the month to filter by, or "all" to apply no month filter
@@ -25,7 +27,7 @@ def get_filters():
         city = input('Please Enter the city(chicago, new york city, washington)!\n').lower()
     if city in CITY_DATA:
         print('You choosed city : {}'.format(city))
-		
+
     # TO DO: get user input for month (all, january, february, ... , june)
     month = input('please Enter the month from January to june!\n').lower()
     while month not in months:
@@ -39,14 +41,19 @@ def get_filters():
         day = input('please Enter the day!\n').lower()
     if day in weekdays:
         print('You choosed day: {}'.format(day))
+
+
     print('-'*40)
+
     return city, month, day
+
 
 
 def load_data(city, month, day):
     df = pd.read_csv(CITY_DATA[city])
     """
     Loads data for the specified city and filters by month and day if applicable.
+
     Args:
         (str) city - name of the city to analyze
         (str) month - name of the month to filter by, or "all" to apply no month filter
